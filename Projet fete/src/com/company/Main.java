@@ -17,7 +17,7 @@ public class Main {
         String utilisateur = "abc" ;
 
         replay = addjoueur(replay, tableaudesjoueurs, reponsejoueursupp, joueurajouter, i);
-        defi = tableaudifficulte(difficulte, defi, tableaudesjoueurs, utilisateur);
+        defi = tableaudifficulte(difficulte, defi, tableaudesjoueurs);
 
     }
 
@@ -45,13 +45,15 @@ public class Main {
         return replay;
     }
 
-    public static String tableaudifficulte(char difficulte, String defi, String[] tableaudesjoueurs, String utilisateur) {
+    public static String tableaudifficulte(char difficulte, String defi, String[] tableaudesjoueurs) {
         Scanner scan = new Scanner(System.in);
-
+        Random r = new Random();
 
         do {
             System.out.println("Veuillez sélectionner une difficulté : ");
             difficulte = scan.next().charAt(0);
+
+            String utilisateur = tableaudesjoueurs[r.nextInt(tableaudesjoueurs.length)];
 
             if (difficulte == 'f' || difficulte == 'F') {
                 System.out.println("La difficulté choisi est : Facile");
